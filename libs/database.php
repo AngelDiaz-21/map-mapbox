@@ -1,21 +1,30 @@
 <?php
-    include_once('config.php');
-    class Model{
-        protected $db;
+    class Database{
+        private $host;
+        private $db;
+        private $user;
+        private $password;
+        private $charset;
         public function __construct(){
-// IMPLEMENTAR LA FORMA DE CONEXIÓN PDO
-            // try{
-            //    $this->db = new PDO(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-            //    $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //    return $this->db;
-            // }catch(PDOException $e){
-            //     echo 'Databse ERROR: '. $e->getMessage();
-            // }
-            $this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-            if($this->db->connect_errno){
-                exit();
+            $this->host     = constant('HOST');
+            $this->db       = constant('DB');
+            $this->user     = constant('USER');
+            $this->password = constant('PASSWORD');
+            $this->charset  = constant('CHARSET');
+        }
+
+        function connect(){
+            try {
+                $connection = "mysql:host=".$this->host.";dbname=".$this->db.";charset=".$this->charset;
+                $options = [
+                    PDO::ATTR_ERRMODE          => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_EMULATE_PREPARES => false,
+                ];
+                $pdo = new PDO($connection, $this->user, $this->password, $options);
+                return $pdo;
+            } catch (PDOException $e) {
+                print_r('Error connection: ' . $e->getMessage());
             }
-            $this->db->set_charset(DB_CHARSET);
         }
     }
 ?>
