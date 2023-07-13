@@ -38,7 +38,7 @@ const handleMouseLeave = (e) => {
 if ($(window).width() > 800) {
   btnDepartamentos.addEventListener('mouseenter', activateMenu); 
 
-  document.querySelectorAll('#grid .hospitales a').forEach((elemento) => {
+  document.querySelectorAll('#grid .hospitales .hospitales-name').forEach((elemento) => {
     elemento.addEventListener('mouseenter', handleMouseEnter);
   });
 
