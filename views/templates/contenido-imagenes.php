@@ -6,12 +6,30 @@
             </button>
             <h3 class="d-block text-center">Hospitales</h3>
             <!-- CREAMOS NUESTRA PROPIA CATEGORIA -->
-            <a href="https://hospitaldrdonatogalarcon.com/" data-hospital="hospital-donato" target="_blank">Hospital General Dr. Donato G. Alarcón<i class="fas fa-angle-right"></i></a>
-            <a href="https://www.facebook.com/HOSPITALGENERALACAPULCO" data-hospital="hospital-general" target="_blank">Hospital General Acapulco<i class="fas fa-angle-right"></i></a>
-            <a href="http://www.imss.gob.mx/" data-hospital="hospital-regional" target="_blank">Hospital General Regional Vicente Guerrero<i class="fas fa-angle-right"></i></a>
-            <a href="https://www.facebook.com/hgaensenanza/" data-hospital="hospital-issste" target="_blank">Hospital General ISSSTE<i class="fas fa-angle-right"></i></a>
-            <a href="#" data-hospital="hospital-militar">Hospital Militar Regional<i class="fas fa-angle-right"></i></a>
-            <a href="#" data-hospital="hospital-naval">Hospital Naval Acapulco<i class="fas fa-angle-right"></i></a>
+            <div class="hospitales-nombre" data-hospital="hospital-donato">
+                <a class="" href="https://hospitaldrdonatogalarcon.com/" target="_blank">Hospital General Dr. Donato G. Alarcón</a>
+                <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="hospitales-nombre" data-hospital="hospital-general">
+                <a class="" href="https://www.facebook.com/HOSPITALGENERALACAPULCO" target="_blank">Hospital General Acapulco</a>
+                <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="hospitales-nombre" data-hospital="hospital-regional">
+                <a class="" href="http://www.imss.gob.mx/" target="_blank">Hospital General Regional Vicente Guerrero</a>
+                <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="hospitales-nombre" data-hospital="hospital-issste">
+                <a class="" href="https://www.facebook.com/hgaensenanza/" target="_blank">Hospital General ISSSTE</a>
+                <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="hospitales-nombre" data-hospital="hospital-militar">
+                <a class="" href="#">Hospital Militar Regional</a>
+                <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="hospitales-nombre" data-hospital="hospital-naval">
+                <a class="" href="#">Hospital Naval Acapulco</a>
+                <i class="fas fa-angle-right"></i>
+            </div>
         </div>
         <div class="contenedor-imagenes" id="contenedor-imagenes">
             <img class="message" alt="ilustración del icono 3d del edificio de la clínica del hospital png" fetchpriority="high" title="ilustración del icono 3d del edificio de la clínica del hospital" data-zoom-src="https://static.vecteezy.com/system/resources/previews/011/098/092/large_2x/hospital-clinic-building-3d-icon-illustration-png.png" data-action="click->resource-show-preview-zoom#trackZoomIn" data-resource-show-preview-target="previewImage" src="https://static.vecteezy.com/system/resources/previews/011/098/092/large_2x/hospital-clinic-building-3d-icon-illustration-png.png">
