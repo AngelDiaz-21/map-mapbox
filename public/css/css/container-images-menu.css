@@ -1,491 +1,242 @@
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+.grid {
+    display: none;
+    grid-template-areas: "hospitales imagenes imagenes imagenes";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    height: 280px;
+    left: 60px;
+    position: absolute;
+    top: 0px !important;
+    width: 60%;
+    z-index: 1000;
+}
+
+.grid.activo {
+    display: grid;
+}
+
+.grid.menu-toggle {
+    top: -125px !important;
+}
+
+.grid::before {
+    background-color: transparent;
+    border-bottom: 10px solid black;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    content: "";
+    display: block;
+    left: 65px;
+    position: absolute;
+    top: -8px;
+}
+
+.grid>div {
+    background-color: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, .10);
+}
+
+.grid .hospitales {
+    grid-area: hospitales;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+
+.hospitales .btn-regresar {
+    background-color: #232F3E;
+    cursor: pointer;
+    display: none;
+    font-size: 1rem;
+    margin: 20px;
+    padding: 10px;
+}
+
+.hospitales .btn-regresar i {
+    margin-right: 10px;
+}
+
+.grid .hospitales .hospitales-nombre{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.grid .hospitales .hospitales-nombre:hover a, 
+.grid .hospitales .hospitales-nombre:hover i{
+    color: #E47911;
+    font-weight: bold;
+}
+
+.hospitales a {
+    color: #000;
+    font-size: 0.875rem;
+    margin: 8px 20px;
+    align-items: center;
+    font-weight: normal;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.grid .hospitales .hospitales-nombre i {
+    display: none;
+    margin-right: 10px;
+}
+
+.grid .hospitales .hospitales-nombre:hover i {
+    display: block;
+}
+
+.grid .contenedor-imagenes {
+    grid-area: imagenes;
+    z-index: 15;
+    height: 280px;
+}
+
+.message{
+    display: flex;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.contenedor-imagenes .imagenes {
+    display: none;
+    grid-template-areas: "banner banner img";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    height: 100%;
+    z-index: 25;
+}
+
+.contenedor-imagenes .imagenes.activo {
+    display: grid;
+}
+
+.contenedor-imagenes .imagenes .banner{
+    grid-area: banner;
+    height: 280px;
+}
+
+.contenedor-imagenes .imagenes .banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 50;
+    display: block;
+}
+
+.contenedor-imagenes .imagenes .galeria{
+    grid-area: img;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.contenedor-imagenes .imagenes .galeria img {
+    object-fit: cover;
+    z-index: 50;
+    width: 50%;
+    height: 50%;
+}
+
+@media screen and (max-width: 1900px) {
+    .grid{
+        width: 65%;
     }
-    
-    body {
-        background-color: #EAEDED;
-        font-family: Arial, sans-serif;
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    .contenedor {
-        margin: auto;
-        width: 90%;
-        max-width: 1200px;
-    }
-    /* /////////////////////////////////////////////////////// */
-    
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    /* Estilo para el MAPA */
-    
-    #map {
-        height: 70%;
+}
+
+@media screen and (max-width: 1700px) {
+    .grid{
         width: 80%;
-        margin: auto;
-        /* padding-top: 100px; */
-        border-radius: 15px;
-        padding-bottom: 100px;
-        /* ///////// */
-        /* opacity: 0; */
-        /* transition: opacity 150ms ease-in; */
-        display: block;
-        /* &.show-map {
-            opacity: 1;
-        } */
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .grid{
+        width: 80%;
+        height: 230px;
+    }
+
+    .hospitales a {
+        margin: 4px 10px;
+    }
+
+    .grid .contenedor-imagenes {
+        height: 230px;
     }
     
-    #indicators {
-        padding: 16px;
-        height: 30%;
-        width: 100%;
-        overflow-y: auto;
-        display: block;
+    .contenedor-imagenes .imagenes .banner{
+        height: 230px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .contenedor-enlaces-nav {
+        padding: 0 10px;
+    }
+
+    .grid{
+        width: 95%;
+        left: 12px;
+        height: 200px;
+    }
+
+    .hospitales a {
+        font-size: 0.75rem;
+        margin: 3px 10px;
+    }
+
+    .grid .contenedor-imagenes {
+        height: 200px;
     }
     
-    .caja {
-        height: 40px;
+    .contenedor-imagenes .imagenes .banner{
+        height: 200px;
     }
-    /* Estilo para la tabla de ubicación */
-    
-    .container {
-        margin: auto;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        width: 900px;
-        /* height: 40%; */
-        background-color: #eaeded;
-        box-shadow: 5px 5px 10 px #848484;
-        box-sizing: border-box;
-        padding: 12px;
-        padding-bottom: 25px;
-        z-index: -5;
-    }
-    
-    .table-elemnts {
-        width: 100%;
-    }
-    
-    .table-elemnts tr td {
-        padding: 6px;
-    }
-    
-    .btn {
-        padding: 6px;
-        cursor: pointer;
-        width: 100%;
-        box-sizing: border-box;
-        background-color: #0080ff;
-        border: 1px solid #0080ff;
-        color: white;
-        border-radius: 15px;
-    }
-    
-    .container .table-elemnts td select:hover {
-        display: none;
-    }
-    /* ENLACES del nav */
-    
-    .menu {
-        background-color: #C7E9FF;
-        padding: 25px 0;
-        margin-bottom: none;
-    }
-    
-    .menu .contenedor-botones-menu {
-        /* display: flex; */
-        /* DESAPARECEN LOS BOTONES */
-        display: none;
-        justify-content: space-between;
-    }
-    
-    .menu .contenedor-botones-menu button {
-        font-size: 20px;
-        color: #fff;
-        padding: 10px 20px;
-        border: 1px solid transparent;
-        display: inline-block;
-        cursor: pointer;
-        background: none;
-    }
-    /* se activa cuando el usuario se desplaza sobre un elemento con el cursor (puntero del mouse). */
-    
-    .menu .contenedor-botones-menu button:hover {
-        border: 1px solid rgba(255, 255, 255, .4);
-    }
-    /* PARA OCULTAR EL BOTON DE CERRAR */
-    
-    .menu .contenedor-botones-menu .btn-menu-cerrar {
-        display: none;
-    }
-    /* CLASE PREPARADA PARA OCUPARSE CON JAVASCRIPT */
-    
-    .menu .contenedor-botones-menu .btn-menu-cerrar.activo {
-        display: inline-block;
-    }
-    /* PARA ACOMODAR LOS ENLACES */
-    
-    .menu .contenedor-enlaces-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .menu .btn-departamentos {
-        color: black;
-        padding: 7px;
-        border-radius: 3px;
-        display: flex;
-        /* PARA QUE EL ICONO SE ACOMODE AL LADO HACIA ABAJO */
-        align-items: flex-end;
-        border: 1px solid transparent;
-        font-size: 28px;
-        cursor: default;
-    }
-    
-    .menu .btn-departamentos i {
-        /* PARA SEPARAR EL ICONO DE LAS LETRAS */
-        margin-left: 20px;
-        position: relative;
-        bottom: 3px;
-    }
-    
-    .menu .btn-departamentos:hover {
-        border: 3px solid rgba(12, 6, 6, 0.4);
-    }
-    
-    .menu .btn-departamentos span {
-        display: block;
-        font-size: 30px;
-        font-weight: bold;
-    }
-    
-    .menu .contenedor-enlaces-nav .enlaces a {
-        color: black;
-        border: 1px solid transparent;
-        padding: 10px;
-        border-radius: 3px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    
-    .menu .contenedor-enlaces-nav .enlaces a:hover {
-        border: 3px solid rgba(12, 6, 6, 0.4);
-    }
-    /* A APRTIR DE AQUI EMPIEZA EL ESTILO PARA EL CONTENEDOR GRID */
-    
-    .contenedor-grid {
-        position: relative;
-        z-index: 5;
-    }
-    
+}
+
+@media screen and (max-width: 800px) {
     .grid {
+        display: grid;
+        transition: .3s ease all;
+        transform: translateX(-100%);
+        z-index: 3000;
         width: 100%;
-        /* CON ESTO OCULTAMOS EL MENU */
-        display: none;
-        /* background-color: tomato; */
-        /* CON ESTO SACAMOS LA GRID AFUERA DEL MENU */
-        position: absolute;
-        /* CON ESTO LO EMPUJAMOS HACIA ABAJO */
-        top: 25px;
-        /* CON ESTO HAREMOS PARA QUE EL MENU QUEDE ARRIBA DE OTROS ELEMENTOS */
-        z-index: 1000;
-        /* ESPECIFICAMOS QUE TRABAJAREMOS CON CUATRO COLUMNAS, UNA PARA LAs CATEGORIAS, OTRA PARA SUBCATEGORIAS, OTRA PARA EL BANNER Y OTRA PARA LAS IMAGENES */
-        /* En este caso solo ocuparemos 3, una para categorias, otra para el banner y otra para las imagenes */
-        grid-template-columns: repeat(3, 1fr);
-        /* PARA LAS FILAS */
-        grid-template-rows: 1fr;
-        /* AQUI YA ESPECIFICAMOS MEJOR LAS COLUMNAS O COMO SERAN USADAS */
-        grid-template-areas: "categorias subcategorias subcategorias subcategorias";
+        position: fixed;
+        left: 0;
+        height: 100%;
+        grid-template-areas: "hospitales hospitales hospitales ";
     }
-    /* CUANDO MI GRID TENGA LA CLASE DE ACTIVO QUE SE MUESTRE */
-    
+
+    .grid.menu-toggle {
+        top: 0 !important;
+    }
+
     .grid.activo {
-        display: grid;
+        transform: translateX(0%);
     }
-    /* PARA DARLE ESE ESTILO QUE APARECE UN TRIANGULO CUANDO SE DESPLAZA LAS CATEGORIAS 
-    ESTAMOS USADO EL PSEUDOELEMENTO "before" PARA CUANDO NUESTRO MENU ESTE EN PATALLA, CUANDO NUESTRO "grid" ESTE OCULTO TAMBIEN ESTE ELEMENTO VA A OCULTARSE
-    */
-    
+
     .grid::before {
-        /* QUE TENGA UNA CADENA DE TEXTO VACIA */
-        content: "";
-        display: block;
-        background-color: transparent;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 5px solid black;
-        /* CON ESTO LO POCISIONAMOS */
-        position: absolute;
-        top: -5px;
-        left: 65px;
+        display: none;
     }
-    /* QUIERO ACCEDER AL "grid" Y A TODOS LOS "div" DIRECTOS QUE SERIAN "categoria y subcategoria" TENGAN ESTAS PROPIEDADES*/
-    
-    .grid>div {
-        background-color: #fff;
-        box-shadow: 0px 3px 6px rgba(0, 0, 0, .10);
-    }
-    /* AQUI YA EMPIEZA LA SECCION DE CATEGORIAS */
-    
+
     .grid .btn-regresar {
-        background-color: #232F3E;
-        color: #fff;
-        border: none;
-        padding: 10px;
-        border-radius: 3px;
-        margin: 20px;
-        font-size: 16px;
-        cursor: pointer;
+        display: inline-block;
+    }
+    
+    .grid .contenedor-imagenes {
+        position: absolute;
+        transform: translateX(-100%);
+    }
+
+    .hospitales a {
+        margin: 8px 10px;
+    }
+
+    .grid .hospitales .hospitales-nombre:hover i {
         display: none;
     }
-    
-    .grid .btn-regresar i {
-        margin-right: 10px;
-    }
-    /* AQUI ESTAMOS ESPECIFICANDO QUE PERTENEZCA AL GRID AREA DE CATEGORIAS */
-    
-    .grid .categorias {
-        grid-area: categorias;
-        padding-top: 10px;
-        /* CON ESTO LE ASIGNAMOS LA ALTURA A LA PARTE DE CATEGORIAS */
-        min-height: 300px;
-        /* CON ESTO HACEMOS QUE SI TENEMOS DEMASIADOS ELEMENTOS EN CATEGORIA, O SEA, VARIOS ENLACES O LETRAS HARA QUE PODAMOS NAVEGAR AHI MISMO, APARECERA UN SCROLL QUE NOS PERMITIRA MOVERNOS. EN ESTE CASO NO SE VERA YA QUE NO TENEMOS DEMASIADOS ELEMENTOS */
-        overflow: auto;
-    }
-    
-    .grid .categorias .subtitulos {
-        display: block;
-        text-align: center;
-    }
-    /* PARA ACOMODAR LAS LETRAS O ENLACES DE LA CATEGORIAS Y ACOMODAR LAS LETRAS Y FLECHAS A UN LADO */
-    
-    .grid .categorias a {
-        color: #000;
-        font-size: 16px;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 20px;
-    }
-    /* PARA QUE DESAPAREZCAL EL ICONO DE LA FLECHITA */
-    
-    .grid .categorias a i {
-        display: none;
-    }
-    /* CON ESTO ESPECIFICAMOS QUE CUANDO SE PASE EL CURSOR ENCIMA DE LAS LETRAS O ENLACES ESTAN CAMBIEN DE COLOR A NARANJA Y LUEGO TENGA UN FONT WEIGHT TIPO BOLD */
-    
-    .grid .categorias a:hover {
-        color: #E47911;
-        font-weight: bold;
-    }
-    /* CON ESTO ESPECIFICAMOS QUE CUANDO PASEMOS EL CURSOR LAS FLECHAS APAREZCAN EN PANTALLA */
-    
-    .grid .categorias a:hover i {
-        display: block;
-    }
-    /* //////////////////////////////////////////////SUBCATEGORIAS/////////////////////////////////////////////////////// */
-    
-    .grid .contenedor-subcategorias {
-        grid-area: subcategorias;
-        z-index: 15;
-    }
-    /* TAMBIEN VAMOS A TRABAJAR CON GRID PARA DECIRLE QUE DENTRO DE LA PRIMER SUBCATEGORIA VAMOS A TRABAJAR CON TRES COLUMNAS */
-    
-    .grid .subcategoria {
-        display: none;
-        /* AQUI ESPECIFICAMOS LAS TRES COLUMNAS */
-        /* grid-template-columns: 1fr 1fr 1fr; */
-        /* En este caso solo vamos a ocupar dos, una para el Banner y otra para las imagenes*/
-        grid-template-columns: 1fr 1fr;
-        /* AQUI ESPECIFICAMOS QUE SOLO SEA UNA FILA */
-        grid-template-rows: 1fr;
-        /* AQUI ESPECIFICAMOS QUE TENGA UN ALTO DEL 100% */
-        height: 100%;
-        z-index: 25;
-    }
-    /* ESTO ES PARA QUE SE MUESTRE SOLO LA PRIMER SUBCATEGORIA QUE SERIA "TECNOLOGIA Y COMPUTADORAS" CUANDO PASEMOS EL MOUSE */
-    
-    .grid .subcategoria.activo {
-        display: grid;
-    }
-    
-    .grid .subcategoria img {
-        /* AJUSTAMOS LAS IMAGENES A CADA COLUMNA Y CADA COLUMNA TIENE EL MISMO TAMAÑO*/
-        width: 100%;
-        /* LE QUITAMOS UN MARGEN QUE AGREGAR EL NAVEGADOR */
-        vertical-align: top;
-        /* AJUSTAMOS LAS IMAGENES PARA QUE ABARQUEN TODA LA ALTURA DEL ESPACIO */
-        height: 100%;
-        /* CON ESTO HACEMOS QUE LAS IMAGENES NO SE DEFORMEN PERO ALGUNOS PEDAZOS DE LA IMAGEN VISUALMENTE VAN QUEDAR FUERA */
-        object-fit: cover;
-        /* object-fit: fill; */
-        z-index: 50;
-    }
-    /* ACCEDEMOS AL CONTENEDOR */
-    
-    .grid .enlaces-subcategoria {
-        padding-top: 10px;
-        height: 100%;
-        max-height: 300px;
-        /* CON ESTO HACEMOS QUE SI TENEMOS DEMASIADOS ELEMENTOS EN SUBCATEGORIA, O SEA, VARIOS ENLACES O LETRAS HARA QUE PODAMOS NAVEGAR AHI MISMO, APARECERA UN SCROLL QUE NOS PERMITIRA MOVERNOS. EN ESTE CASO NO SE VERA YA QUE NO TENEMOS DEMASIADOS ELEMENTOS */
-        overflow: auto;
-    }
-    /* ACCEDEMOS A LOS ENLACES */
-    /* .grid .enlaces-subcategoria a {
-        color: #000;
-        PARA QUE ABARQUE TODO EL ANCHO DISPONIBLE
-        display: block;
-        font-size: 14px;
-        padding: 10px 20px;
-    } */
-    /* CUANDO PASEMOS EL MOUSE PASARA ESTO */
-    /* .grid .enlaces-subcategoria a:hover {
-        color: #E47911;
-    } */
-    
-    .grid .subtitulo {
-        font-size: 18px;
-        font-weight: normal;
-        color: #E47911;
-        padding: 10px 20px;
-    }
-    
-    .grid .banner-subcategoria a {
-        /* QUE OCUPE TODO EL ANCHO */
-        display: block;
-        /* QUE OCUPE TODO EL ALTO */
-        height: 100%;
-    }
-    
-    .grid .galeria-subcategoria {
-        display: flex;
-        /* PARA QUE LOS ELEMENTOS PUEDAN ABARCAR VARIAS LINEAS DE ESPACIOS */
-        flex-wrap: wrap;
-        /* PARA QUE TODOS LOS ELEMENTOS SE POSICIONEN AL INICIO DE NUESTRA CAJA */
-        align-content: start;
-        /* height: 100%; */
-    }
-    /* EN DADO CASO TUVIERAMOS 4 IMAGENES PERO COMO SOLO SE OCUPARAN 2 NO LO NECESITAMOS. Y se pone en 25% */
-    
-    .grid .galeria-subcategoria a {
-        width: 50%;
-        height: 50%;
-    }
-    /* @media screen and (max-width: 1000px) {
-        .menu .contenedor-enlaces-nav {
-            padding: 0 10px;
-        }
-        .menu .contenedor {
-            width: 100%;
-        }
-    } */
-    /* @media screen and (max-width: 800px) {
-        .menu .contenedor {
-            width: 90%;
-        }
-        .menu .contenedor-botones-menu {
-            display: flex;
-        }
-        .menu .contenedor-enlaces-nav {
-            padding: 20px;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            position: fixed;
-            left: 0;
-            background: #232F3F;
-            height: 100vh;
-            width: 80%;
-            z-index: 2000;
-            transition: .3s ease all;
-            transform: translate(-100%);
-        }
-        .menu .contenedor-enlaces-nav.activo {
-            transform: translate(0%);
-        }
-        .menu .btn-departamentos {
-            width: 100%;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-        .menu .btn-departamentos i {
-            position: static;
-            margin-left: 20px;
-            transform: rotate(-90deg);
-        }
-        .menu .enlaces {
-            width: 100%;
-        }
-        .menu .enlaces a {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-        }
-        .grid {
-            display: grid;
-            transition: .3s ease all;
-            transform: translateX(-100%);
-            z-index: 3000;
-            width: 80%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            grid-template-areas: "categorias categorias categorias ";
-        }
-        .grid.activo {
-            transform: translateX(0%);
-        }
-        .grid::before {
-            display: none;
-        }
-        .grid .btn-regresar {
-            display: inline-block;
-        }
-        .grid .categorias .subtitulo {
-            display: block;
-        }
-        .grid .contenedor-subcategorias {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            transition: .3s ease all;
-            transform: translateX(-100%);
-            overflow: auto;
-        }
-        .grid .contenedor-subcategorias.activo {
-            transform: translateX(0%);
-        }
-        .grid .contenedor-subcategorias .subcategoria {
-            grid-template-columns: 1fr;
-        }
-        .grid .contenedor-subcategorias .banner-subcategoria {
-            width: 100%;
-            min-height: 250px;
-            max-height: 350px;
-        }
-        .grid .enlaces-subcategoria {
-            min-height: 50vh;
-            overflow: auto;
-        }
-        .grid .contenedor-subcategorias .galeria-subcategoria a {
-            width: 25%;
-            height: 100%;
-        }
-    } */
-    /* Desaparecer div */
-    
-    #desaparece {
-        display: none;
-    }
+}
