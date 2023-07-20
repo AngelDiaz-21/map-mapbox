@@ -31,5 +31,5 @@
 </header>
 
 <?php
-    include('views/templates/contenido-imagenes.php');
+    include('views/templates/content-images.php');
 ?>
