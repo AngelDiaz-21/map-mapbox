@@ -1,7 +1,26 @@
-#btn-depar {
-    visibility: hidden;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #EAEDED;
+    display: grid;
+    font-family: Arial, sans-serif;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
 
 /* #ocultar1 {
     display: none;
