@@ -1,63 +1,48 @@
-<?php
-    include_once('php/config.php');
-    include_once('php/google.php');
-    $google = new Google;
-?>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Mi pagina personal tec">
-        <meta name="Keyword" content="Angel, programación, programacion web, trabajos">
         <meta name="author" content="Angel Alberto Díaz Cortés">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> SISCOE con mysqli </title>
-        <link rel="stylesheet" href="css/css/style.css?version=1.0.2">
-        <!-- Con este css hacemos que las tablas esten juntas como si fueran una -->
-        <link rel="stylesheet" href="style.css?version=1.0.2">
-        <!-- <link rel="stylesheet" href="css/css/style_popu.css?version=1.0.1"> -->
-        <link rel="stylesheet" href="css/bootstrap/bootstrap.css?version=1.0.3">
+        <title>Sistema De Información COVID-19</title>
+        <!-- FIXME: Cuando se puebre desde el celular quitar lo de php-->
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/css/container-images-menu.css?version=1.0.1">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/bootstrap5/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/css/menu.css?version=1.0.2">
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/css/maps.css?version=1.0.0">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="<?php echo constant('URL');?>public/css/css/style.css?version=1.0.3">
     </head>
-
     <body>
         <?php
-            include('templates/menu.php');
+            include('views/templates/header.php');
         ?>
-
         <main role="main">
-            <div class="container text-center mt-5">
-                <div class="row mt-3">
+            <div class="container mt-2">
+                <div class="row">
                     <div class="col-md-12">
-                        <h2 class="h2s">Información de hospitales COVID-19</h2>
-                        <?php
-                            // DE ESTA FORMA TAMBÍEN SE PUEDE
-                            $edu = new Google;
-                            $coll = $edu->tbl_datos_hospitales();
-                            // print_r($coll);
-                            // $coll = json_encode($coll, true);
-                            // echo '<div id="data">'.$coll. '</div>'
-                        ?>  
-                    
+                        <h2 class="text-center">Información de hospitales COVID-19</h2>
+                        <div id="table" class=" table-responsive"></div>
                     </div>
                 </div> 
+                <div class="row mt-5 mb-5">
+                    <div class="col-md-12">
+                        <div id="map" class="map"></div>
+                    </div>
+                </div>
             </div>
         </main>
         <?php
-            // include('templates/prueba-mapa.php');
+            include('views/templates/footer.php');
         ?>
-        <div id="map"></div>
-        <!-- <div class="caja"></div> -->
-        <!-- <footer>
-        </footer> -->
-        <!-- <script src="js/function.js?version=1.0.2"></script> -->
-        <!-- <script src="js/prueba-mapa.js?version=1.0.5"></script> -->
-        <!-- <script src="main.js"></script> -->
-        <!-- <script src="js/popup.js?version=1.0.2"></script> -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzk0G2tLaQyBB70--EdCglWM-D_j9jmds&callback=initMap&libraries=&v=weekly" async></script>
-        <script src="js/menu.js?version=1.0.2"></script>
-        <script src="js/mapa_estaticos.js?version=1.0.3"></script>
-        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?php echo constant('URL');?>public/js/jquery-3.5.1.min.js"></script>
+        <script src="<?php echo constant('URL');?>public/js/menu.js?version=1.0.1"></script>
+        <script src="<?php echo constant('URL');?>public/js/container-images.js?version=1.0.3"></script>
+        <script type="module" src="<?php echo constant('URL');?>public/js/mapbox.js?version=1.0.3"></script>
+        <script src="<?php echo constant('URL');?>public/js/getDataHospitals.js?version=1.0.2"></script>
     </body>
 </html>
