@@ -1,0 +1,100 @@
+#map {
+    width: 100%;
+    height: 60vh;
+    margin: 0 auto;
+}
+
+.marker{
+    background-image: url('https://i.ibb.co/sq3LCcH/hospital-icon.png');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.mapboxgl-popup-close-button{
+    margin-right: 5px;
+    border: 0 !important;
+}
+
+button{
+    border-width: 0 !important;
+    border: 0 !important;
+}
+
+.mapboxgl-popup-close-button:focus-visible{
+    outline: 0 !important;
+}
+
+.title-map{
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.information-text{
+    text-align: justify;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.text-justify{
+    text-align: justify !important;
+}
+
+.btn-ubication{
+    background-color: #7398c4;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    width: 22%;
+    margin-right: 5px;
+}
+
+.btn-ubication:hover{
+    background-color: #6eb8f5;
+    transition: all 0.2s;
+}
+
+.input-value{
+    padding: 2px;
+    border: 0;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.input-value:focus-visible{
+    outline: 0;
+}
+
+@media screen and (max-width: 1400px) {
+    .btn-ubication{
+        width: 25%;
+    }
+
+    .input-value{
+        width: 25%;
+    }
+    
+}
+
+@media screen and (max-width: 1200px) {
+    .btn-ubication{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .btn-ubication{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .mapboxgl-ctrl-directions{
+        width: 220px !important;
+        min-width: 0 !important;
+    }
+}
