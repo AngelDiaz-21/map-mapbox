@@ -16,10 +16,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="menu__lista navbar-nav mb-2 mb-lg-0 fs-6">
                     <li class="nav-item menu-link">
-                        <a class="nav-link" href="index.php">Hospitales cercanos</a>
+                        <a class="nav-link" href="<?php echo constant('URL');?>">Hospitales cercanos</a>
                     </li>
                     <li class="nav-item menu-link">
-                        <a class="nav-link" href="inicio.php">Conoce tu ruta</a>
+                        <a class="nav-link" href="<?php echo constant('URL');?>maps/showDrawRoute">Dibuja tu ruta</a>
                     </li>
                     <li class="nav-item menu-link">
                         <a class="nav-link" href="https://coronavirus.gob.mx/">Más información del COVID-19</a>
